@@ -23,21 +23,23 @@ pip3 install -r requirements.txt
 ```
 Deploy locally
 ```
-export FLASK_APP=tryargus
-flask run
+python3 tryargus.py
 ```
 Now it is working in http://127.0.0.1:5000/
+
+:warning: It is not possible use **flask** because there is any problem with **plaid** library
 
 ### Test
 Only execute
 ````
-pytest
+python3 test_tryargus.py
 ````
-
+:warning: It is not possible use **pytest** because there is any problem with **plaid** library
 ## Roadmap
 - [x] Create account in Plaid
-- [ ] Create Unit and Integration test suit
+- [x] Create Integration test suit
 - [x] Build the resource API skeleton
 - [ ] Create (or use Plaid's) methods to call the API
+- [ ] Create Unit test suit
 - [ ] Complete the test suit
 - [ ] Create an AWS instance and deploy it
