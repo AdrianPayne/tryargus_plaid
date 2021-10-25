@@ -37,7 +37,7 @@ pytest
 ## Roadmap
 - [x] Create account in Plaid
 - [ ] Create Unit and Integration test suit
-- [ ] Build the resource API skeleton
+- [x] Build the resource API skeleton
 - [ ] Create (or use Plaid's) methods to call the API
 - [ ] Complete the test suit
 - [ ] Create an AWS instance and deploy it
