@@ -13,8 +13,29 @@ Resource | Method | BODY | RESPONSE
 /query | POST | - |  <ul><li>If called before “/exchange”, returns a 404</li><li>201</li></ul>
 /account | GET | - | 200 & response from “/query”
 
+## Local use
+### Deploy
+Create and activate local environment
+```
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
+Deploy locally
+```
+export FLASK_APP=tryargus
+flask run
+```
+Now it is working in http://127.0.0.1:5000/
+
+### Test
+Only execute
+````
+pytest
+````
+
 ## Roadmap
-- [ ] Create account in Plaid
+- [x] Create account in Plaid
 - [ ] Create Unit and Integration test suit
 - [ ] Build the resource API skeleton
 - [ ] Create (or use Plaid's) methods to call the API
