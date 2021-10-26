@@ -38,6 +38,10 @@ I had used **pytest-ordering** to avoid cache problems between tests
 ## AWS Instance
 http://flask-env.eba-pxrp9ipm.us-east-2.elasticbeanstalk.com/
 
+## Postman Collection
+Local and AWS
+https://www.getpostman.com/collections/b301c1865c145436f3bf
+
 ## Roadmap
 - [x] Create account in Plaid
 - [x] Create Integration test suit
@@ -45,7 +49,7 @@ http://flask-env.eba-pxrp9ipm.us-east-2.elasticbeanstalk.com/
 - [x] Create methods to call the API
 - [x] Complete the test suit
 - [X] Create an AWS instance and deploy it
-- [ ] Postman collection
+- [X] Postman collection
 
 ## Notes
 1. As it is a test in a sandbox environment and to facilitate the tests by third parties, I have not encrypted the 
@@ -54,3 +58,6 @@ http://flask-env.eba-pxrp9ipm.us-east-2.elasticbeanstalk.com/
    
 2. I have preferred to use http requests directly because **Plaid PostMan collection** has better explained and completed 
 than **Plaid python library** documentation.
+   
+3. For the same reason of Note 1, I have not configured any security in AWS instance (all directions allowed). Obviously 
+it is only for a test case.
