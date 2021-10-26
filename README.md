@@ -27,19 +27,25 @@ python3 tryargus.py
 ```
 Now it is working in http://127.0.0.1:5000/
 
-:warning: It is not possible use **flask** because there is any problem with **plaid** library
 
 ### Test
 Only execute
 ````
-python3 test_tryargus.py
+py.test -vv --disable-pytest-warnings
 ````
-:warning: It is not possible use **pytest** because there is any problem with **plaid** library
+I had used **pytest-ordering** to avoid cache problems between tests
+
 ## Roadmap
 - [x] Create account in Plaid
 - [x] Create Integration test suit
 - [x] Build the resource API skeleton
-- [ ] Create (or use Plaid's) methods to call the API
-- [ ] Create Unit test suit
-- [ ] Complete the test suit
+- [x] Create methods to call the API
+- [x] Complete the test suit
 - [ ] Create an AWS instance and deploy it
+- [ ] Postman collection
+
+## Notes
+1. As it is a test in a sandbox environment and to facilitate the tests by third parties, I have not encrypted the 
+   sensitive information to connect with the Plaid API. Of course, this is something to be avoided in real projects 
+   (using AWS env or GitHub Actions for example.
+   

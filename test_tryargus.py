@@ -1,6 +1,7 @@
 import unittest
-
+import pytest
 from tryargus import app
+from plaid_client import get_public_token
 
 # Unit Test
 
@@ -10,40 +11,51 @@ class ControllerTestCase(unittest.TestCase):
     def setUp(self):
         self.app = app
         self.client = self.app.test_client()
-        self.payload = {'public_token': 'public_token'}
+        self.public_token = {'public_token': get_public_token()}
 
     # /
     def test_health(self):
         response = self.client.get('/')
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, b"Healthy")
+
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(b"Healthy", response.data)
 
     # /exchange
     def test_exchange(self):
-        response = self.client.post('/exchange', json=self.payload)
-        self.assertEqual(response.status_code, 201)
+        response = self.client.post('/exchange', json=self.public_token)
+
+        from tryargus import access_token
+
+        self.assertEqual(201, response.status_code)
+        self.assertIsNotNone(access_token)
 
     # /query
+    @pytest.mark.first
     def test_query_without_exchange_before(self):
-        response = self.client.post('/query', json=self.payload)
-        self.assertEqual(response.status_code, 404)
+        response = self.client.post('/query')
+
+        self.assertEqual(404, response.status_code)
 
     def test_query_ok(self):
-        response = self.client.post('/exchange', json=self.payload)
-        response = self.client.post('/query', json=self.payload)
+        self.client.post('/exchange', json=self.public_token)
+        response = self.client.post('/query')
 
-        self.assertEqual(response.status_code, 201)
+        from tryargus import investment_and_transaction_data
+
+        self.assertEqual(201, response.status_code)
+        self.assertIsNotNone(investment_and_transaction_data)
 
     # /account
-    def test_account(self):
-        expected_resp = {'foo': 'bar'}
+    def test_account_ok(self):
+        self.client.post('/exchange', json=self.public_token)
+        self.client.post('/query')
+        response = self.client.get('/account')
 
-        response = self.client.get('/account', json=self.payload)
+        from tryargus import investment_and_transaction_data
 
-        self.assertDictEqual(response.get_json(), expected_resp)
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(201, response.status_code)
+        self.assertIsNotNone(investment_and_transaction_data)
 
 
 if __name__ == "__main__":
     unittest.main()
-
