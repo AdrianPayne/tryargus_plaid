@@ -6,7 +6,7 @@ import os
 CLIENT_ID = '6176e5e044fc260012f975b7'
 SECRET = '971eb8b7fc5751caee53cb59bc7bc8'
 if os.environ.get('ENV') == 'AWS':
-    ENV_URL = 'http://flask-env.eba-pxrp9ipm.us-east-2.elasticbeanstalk.com'
+    ENV_URL = 'http://flask-env.eba-pxrp9ipm.us-east-2.elasticbeanstalk.com/'
 else:
     ENV_URL = 'https://sandbox.plaid.com/'
 
