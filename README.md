@@ -47,5 +47,7 @@ I had used **pytest-ordering** to avoid cache problems between tests
 ## Notes
 1. As it is a test in a sandbox environment and to facilitate the tests by third parties, I have not encrypted the 
    sensitive information to connect with the Plaid API. Of course, this is something to be avoided in real projects 
-   (using AWS env or GitHub Actions for example.
+   (using AWS env or GitHub Actions for example).
    
+2. I have preferred to use http requests directly because **Plaid PostMan collection** has better explained and completed 
+than **Plaid python library documentation**.
