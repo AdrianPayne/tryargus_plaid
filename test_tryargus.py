@@ -1,6 +1,6 @@
 import unittest
 import pytest
-from tryargus import app
+from application import application
 from plaid_client import get_public_token
 
 # Unit Test
@@ -9,7 +9,7 @@ from plaid_client import get_public_token
 # Integration Test
 class ControllerTestCase(unittest.TestCase):
     def setUp(self):
-        self.app = app
+        self.app = application
         self.client = self.app.test_client()
         self.public_token = {'public_token': get_public_token()}
 
@@ -24,7 +24,7 @@ class ControllerTestCase(unittest.TestCase):
     def test_exchange(self):
         response = self.client.post('/exchange', json=self.public_token)
 
-        from tryargus import access_token
+        from application import access_token
 
         self.assertEqual(201, response.status_code)
         self.assertIsNotNone(access_token)
@@ -40,7 +40,7 @@ class ControllerTestCase(unittest.TestCase):
         self.client.post('/exchange', json=self.public_token)
         response = self.client.post('/query')
 
-        from tryargus import investment_and_transaction_data
+        from application import investment_and_transaction_data
 
         self.assertEqual(201, response.status_code)
         self.assertIsNotNone(investment_and_transaction_data)
@@ -51,7 +51,7 @@ class ControllerTestCase(unittest.TestCase):
         self.client.post('/query')
         response = self.client.get('/account')
 
-        from tryargus import investment_and_transaction_data
+        from application import investment_and_transaction_data
 
         self.assertEqual(201, response.status_code)
         self.assertIsNotNone(investment_and_transaction_data)

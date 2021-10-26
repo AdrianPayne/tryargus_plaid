@@ -23,7 +23,7 @@ pip3 install -r requirements.txt
 ```
 Deploy locally
 ```
-python3 tryargus.py
+python3 application.py
 ```
 Now it is working in http://127.0.0.1:5000/
 
@@ -50,4 +50,4 @@ I had used **pytest-ordering** to avoid cache problems between tests
    (using AWS env or GitHub Actions for example).
    
 2. I have preferred to use http requests directly because **Plaid PostMan collection** has better explained and completed 
-than **Plaid python library documentation**.
+than **Plaid python library** documentation.

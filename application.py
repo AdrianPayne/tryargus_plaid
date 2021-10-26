@@ -11,15 +11,15 @@ access_token = None
 investment_and_transaction_data = None
 
 # flask app
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route("/", methods=['GET'])
+@application.route("/", methods=['GET'])
 def healthy():
     return Response("Healthy", status=200)
 
 
-@app.route("/exchange", methods=['POST'])
+@application.route("/exchange", methods=['POST'])
 def exchange():
     body = request.get_json()
     public_token = body['public_token']
@@ -41,7 +41,7 @@ def exchange():
     return Response(status=201)
 
 
-@app.route("/query", methods=['POST'])
+@application.route("/query", methods=['POST'])
 def query():
     url = ENV_URL + "investments/holdings/get"
 
@@ -65,10 +65,10 @@ def query():
     return Response(status=201)
 
 
-@app.route("/account", methods=['GET'])
+@application.route("/account", methods=['GET'])
 def account():
     return Response(investment_and_transaction_data, status=201)
 
 
 if __name__ == '__main__':
-    app.run(port=os.getenv('PORT', 5000))
+    application.run(port=os.getenv('PORT', 5000))
