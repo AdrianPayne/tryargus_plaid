@@ -35,13 +35,16 @@ py.test -vv --disable-pytest-warnings
 ````
 I had used **pytest-ordering** to avoid cache problems between tests
 
+## AWS Instance
+http://flask-env.eba-pxrp9ipm.us-east-2.elasticbeanstalk.com/
+
 ## Roadmap
 - [x] Create account in Plaid
 - [x] Create Integration test suit
 - [x] Build the resource API skeleton
 - [x] Create methods to call the API
 - [x] Complete the test suit
-- [ ] Create an AWS instance and deploy it
+- [X] Create an AWS instance and deploy it
 - [ ] Postman collection
 
 ## Notes
